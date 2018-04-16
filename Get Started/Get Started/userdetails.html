@@ -1,0 +1,31 @@
+<div style="margin: 25px 0px">
+	<div>{{user.name}}</div>
+	<div>Last name : {{user.login}}</div>
+	<img ng-src="{{user.avatar_url}}" title="{{user.name}}"/>
+	
+	<div>
+		Order:
+		<select ng-model="repoSortOrder">
+			<option value="+name">Name</option>
+			<option value="-created_at">Created at</option>
+			<option value="+language">Language</option>
+		</select>
+	</div>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Created at</th>
+			<th>Language</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="repo in repos | orderBy : repoSortOrder">
+			<td>{{repo.name}}</td>
+			<td>{{repo.created_at | date:'short'}}</td>
+			<td>{{repo.language}}</td>
+		</tr>
+	</tbody>
+</table>

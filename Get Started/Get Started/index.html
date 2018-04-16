@@ -11,15 +11,16 @@
   <body ng-controller="MainCtrl">
     <h1>{{message}}</h1>
     
-    <div>
-        {{error}}
-    </div>
+    <div>{{error}}</div>
     
-    <div>
-        <div>Name : {{user.name}}</div>
-        <div>Last name : {{user.login}}</div>
-        <img ng-src="{{user.avatar_url}}" title="{{user.name}}"/>
-    </div>
+	{{ username }}
+	<form name="searchUser" ng-submit="search(username)">
+		<input type="search" required placeholder="Username to find" ng-model="username"/>
+		<input type="submit" value="Search"/>		
+	</form>
+	
+	<div ng-include="'userdetails.html'" ng-show="user"></div>
+	
   </body>
 
 </html>
