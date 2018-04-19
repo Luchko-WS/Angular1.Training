@@ -96,7 +96,7 @@
             } else {
                 //update product
                 for (var i = 0; i < products.length; i++) {
-                    if (products[i].productId == id) {
+                    if (products[i].productId == product.productId) {
                         products[i] = product;
                         break;
                     }
