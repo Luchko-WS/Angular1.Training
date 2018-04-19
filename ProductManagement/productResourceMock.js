@@ -65,9 +65,51 @@
             "tags": ["gaming", "controller", "video game"],
             "imageUrl": "https://openclipart.org/download/239403/1454254857.svg"
         }];
-        
+
         var productUrl = "/api/products";
+
         $httpBackend.whenGET(productUrl).respond(products);
+
+        var editingRegex = new RegExp(productUrl + "/[0-9][0-9]*", '');
+        $httpBackend.whenGET(editingRegex).respond(function(method, url, data) {
+            var product = {
+                "productId": 0
+            };
+            var parameters = url.split('/');
+            var length = parameters.length;
+            var id = parameters[length - 1];
+
+            if (id > 0) {
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].productId == id) {
+                        product = products[i];
+                        break;
+                    }
+                }
+            }
+
+            return [200, product, {}];
+        });
+
+        $httpBackend.whenPOST(productUrl).respond(function(method, url, data) {
+            var product = angular.fromJson(data);
+
+            if (!product.productId) {
+                //new product
+                product.productId = products[products.length - 1].productId + 1;
+                products.push(product);
+            } else {
+                //update product
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].productId == id) {
+                        products[i] = product;
+                        break;
+                    }
+                }
+            }
+
+            return [200, product, {}];
+        });
     });
     
 }());
