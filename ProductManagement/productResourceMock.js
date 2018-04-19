@@ -105,11 +105,12 @@
 
             return [200, product, {}];
         });
-        
+
         //mine configuration for plunker
         $httpBackend.whenGET('productListView.html').passThrough();
-         $httpBackend.whenGET('productEditView.html').passThrough();
+        $httpBackend.whenGET('productEditView.html').passThrough();
         $httpBackend.whenGET('welcomeView.html').passThrough();
+        $httpBackend.whenGET('productDetailView.html').passThrough();
     });
 
 }());
