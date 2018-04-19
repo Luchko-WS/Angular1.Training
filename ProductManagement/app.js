@@ -27,7 +27,14 @@
                 .state("productDetail", {
                     url: "/products/:productId",
                     templateUrl: "productDetailView.html",
-                    controller: "ProductDetailController as vm"
+                    controller: "ProductDetailController as vm",
+                    resolve: {
+                        productResource: "productResource",
+                        product: function(productResource, $stateParams){
+                            var productId = $stateParams.productId;
+                            return productResource.get({productId: productId}).$promise;
+                        }
+                    }
                 })
         }
     ]);
