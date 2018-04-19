@@ -21,10 +21,15 @@
             vm.opened = !vm.opened;
         };
 
-        vm.submit = function() {
-            vm.product.$save(function(data){
-                toastr.success("Save Successful");
-            });
+        vm.submit = function(isValid) {
+            if (isValid) {
+                vm.product.$save(function(data) {
+                    toastr.success("Save Successful");
+                });
+            }
+            else{
+                alert("Please correct the validation errors first.");
+            }
         };
 
         vm.cancel = function() {
@@ -40,8 +45,8 @@
                 alert("Please enter one or more tags separated by commas");
             }
         };
-        
-        vm.removeTag = function(idx){
+
+        vm.removeTag = function(idx) {
             vm.product.tags.splice(idx, 1);
         };
     }
