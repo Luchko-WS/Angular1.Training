@@ -1,6 +1,7 @@
 (function() {
     var app = angular.module('productManagement', ['common.services',
         'ui.router',
+        'ui.bootstrap',
         'productResourceMock'
     ]);
 
@@ -23,7 +24,7 @@
                     abstract: true,
                     url: "/products/edit/:productId",
                     templateUrl: "productEditView.html",
-                    controller: "ProductListController as vm",
+                    controller: "ProductEditController as vm",
                     resolve: {
                         productResource: "productResource",
                         product: function(productResource, $stateParams){
@@ -34,15 +35,15 @@
                 })
                  .state("productEdit.info", {
                     url: "/info",
-                    templateUrl: "productEditInfoView.html",
+                    templateUrl: "productEditInfoView.html"
                 })
                  .state("productEdit.price", {
                     url: "/price",
-                    templateUrl: "productEditPriceView.html",
+                    templateUrl: "productEditPriceView.html"
                 })
                  .state("productEdit.tags", {
                     url: "/tags",
-                    templateUrl: "productEditTagsView.html",
+                    templateUrl: "productEditTagsView.html"
                 })
                 
                 .state("productDetail", {
