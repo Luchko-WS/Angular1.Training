@@ -18,6 +18,7 @@
     <script src="productResourceMock.js"></script>
     <script src="productListController.js"></script>
     <script src="productDetailController.js"></script>
+    <script src="productEditController.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="productList">Product List</a></li>
-                    <li><a ui-sref="productEdit({productId : 0})"><span class="glyphicon glyphicon-plus"></span> Add Product</a></li>
+                    <li><a ui-sref="productEdit.info({productId : 0})"><span class="glyphicon glyphicon-plus"></span> Add Product</a></li>
                 </ul>
             </div>
         </div>

@@ -109,6 +109,9 @@
         //mine configuration for plunker
         $httpBackend.whenGET('productListView.html').passThrough();
         $httpBackend.whenGET('productEditView.html').passThrough();
+        $httpBackend.whenGET('productEditInfoView.html').passThrough();
+        $httpBackend.whenGET('productEditPriceView.html').passThrough();
+        $httpBackend.whenGET('productEditTagsView.html').passThrough();
         $httpBackend.whenGET('welcomeView.html').passThrough();
         $httpBackend.whenGET('productDetailView.html').passThrough();
     });
