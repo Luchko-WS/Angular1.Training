@@ -1,11 +1,10 @@
 (function() {
-    
+
     var app = angular
-        .module('productResourceMock',
-            ['ngMockE2E']);
-            
-    app.run(function($httpBackend){
-         var products = [{
+        .module('productResourceMock', ['ngMockE2E']);
+
+    app.run(function($httpBackend) {
+        var products = [{
             "productId": 1,
             "productName": "Leaf Rake",
             "productCode": "GDN-0011",
@@ -16,8 +15,7 @@
             "category": "garden",
             "tags": ["leaf", "tool"],
             "imageUrl": "https://openclipart.org/download/26215/Leaf-Rake.svg"
-        },
-        {
+        }, {
             "productId": 2,
             "productName": "Garden Cart",
             "productCode": "GDN-0023",
@@ -28,8 +26,7 @@
             "category": "garden",
             "tags": ["garden", "cart", "wheelbarrow"],
             "imageUrl": "https://openclipart.org/download/58471/garden-cart.svg"
-        },
-        {
+        }, {
             "productId": 5,
             "productName": "Hammer",
             "productCode": "TBX-0048",
@@ -40,8 +37,7 @@
             "category": "toolbox",
             "tags": ["tool"],
             "imageUrl": "https://openclipart.org/download/4793/david-benjamin-Hammer.svg"
-        },
-        {
+        }, {
             "productId": 8,
             "productName": "Saw",
             "productCode": "TBX-0022",
@@ -51,9 +47,8 @@
             "price": 11.60,
             "category": "garden",
             "tags": ["garden", "mower"],
-            "imageUrl": "https://openclipart.org/download/189970/1389256784.svg"
-        },
-        {
+            "imageUrl": "https://openclipart.org/download/34327/sega-per-legno.svg"
+        }, {
             "productId": 10,
             "productName": "Video Game Controller",
             "productCode": "GMG-0042",
@@ -110,6 +105,11 @@
 
             return [200, product, {}];
         });
+        
+        //mine configuration for plunker
+        $httpBackend.whenGET('productListView.html').passThrough();
+         $httpBackend.whenGET('productEditView.html').passThrough();
+        $httpBackend.whenGET('welcomeView.html').passThrough();
     });
-    
+
 }());
