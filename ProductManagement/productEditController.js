@@ -1,12 +1,31 @@
 (function() {
     angular
         .module('productManagement')
-        .controller('ProductEditController', ["product", "$state", ProductEditController]);
+        .controller('ProductEditController', ["product", "$state", "productService", ProductEditController]);
 
-    function ProductEditController(product, $state) {
+    function ProductEditController(product, $state, productService) {
         var vm = this;
 
         vm.product = product;
+        vm.priceOption="percent";
+
+        vm.marginPercent = function(){
+            return productService.calculateMarginPercent(vm.product.price, vm.product.cost);
+        };
+
+        vm.calculatePrice = function(){
+            var price = 0;
+            
+            if(vm.priceOption == 'amount'){
+                price = productService.calculatePriceFromAmount(vm.product.cost, vm.markupAmount);
+            }
+            
+            if(vm.priceOption == 'percent'){
+                price = productService.calculatePriceFromPercent(vm.product.cost, vm.markupPercent);
+            }
+            
+            vm.product.price = price;
+        };
 
         if (vm.product && vm.product.productId) {
             vm.title = "Edit: " + vm.product.productName;

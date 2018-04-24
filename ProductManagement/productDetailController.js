@@ -1,18 +1,20 @@
-(function(){
+(function() {
     angular
         .module('productManagement')
-        .controller('ProductDetailController', ["product", ProductDetailController]);
-        
-    function ProductDetailController(product){
+        .controller('ProductDetailController', ["product", "productService", ProductDetailController]);
+
+    function ProductDetailController(product, productService) {
         var vm = this;
-        
+
         vm.product = product;
-        //product;
+
         vm.title = "Product Detail: " + vm.product.productName;
         
-        if(vm.product.tags){
+        vm.marginPercent = productService.calculateMarginPercent(vm.product.price, vm.product.cost);
+        
+        if (vm.product.tags) {
             vm.product.tagList = vm.product.tags.toString();
         }
     }
-    
+
 }());
